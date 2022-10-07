@@ -17,17 +17,21 @@
         </div>
       </div>
     </div>
+    <PageControls />
   </div>
-
 </template>
 
 <script>
-import { mapState } from "vuex"
+import {mapGetters, mapState} from "vuex"
+import PageControls from "@/components/PageControls";
 
 export default {
-  name: "ProductList.vue",
+  components: {
+    PageControls,
+  },
   computed:{
-    ...mapState([ "products" ])
+    ...mapState([ "products" ]),
+    ...mapGetters({ products: "processedProducts" })
   },
   filters: {
     currency(value){
