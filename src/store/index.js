@@ -44,23 +44,26 @@ export default new Vuex.Store({
     },
     mutations: {
         setCurrentPage:(state, page) => {
-            //Vue.set(state, 'currentPage', page)
             state.currentPage = page
         },
+
         setPageSize: (state, size) => {
             state.pageSize = size;
             state.currentPage = 1
         },
+
         setCurrentCategory: (state, category) => {
             state.currentCategory = category;
             state.currentPage = 1;
         },
+
         setData: (state, data) => {
             state.products = data.pdata;
             state.productsTotal = data.pdata.length;
             state.categoriesData = data.cdata.sort();
         }
     },
+
     actions: {
         async getData(context){
             let pdata = (await Axios.get(productsUrl)).data;
