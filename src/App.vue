@@ -1,16 +1,20 @@
 <template>
   <div id="app">
-    <Store />
+    <router-view />
   </div>
 </template>
 
 <script>
-import Store from './components/StoreComponent.vue'
+import { mapActions } from "vuex"
 
 export default {
   name: 'App',
-  components: {
-    Store,
+
+  methods:{
+    ...mapActions(['getData'])
+  },
+  created() {
+    this.getData();
   }
 }
 </script>

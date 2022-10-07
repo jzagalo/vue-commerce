@@ -1,7 +1,14 @@
 import Vue from "vue";
 import Vuex from "vuex"
 
+import Axios from "axios";
+
 Vue.use(Vuex)
+
+const baseUrl = "http://localhost:3500"
+const productsUrl = `${baseUrl}/products`;
+const categoriesUrl = `${baseUrl}/categories`
+import CartModule from "./cart"
 
 const testData = [];
 
@@ -14,8 +21,12 @@ for (let i = 1; i <= 10; i++) {
 
 export default new Vuex.Store({
     strict:true,
+    modules: {
+        cart: CartModule
+    },
     state:{
         products: testData,
+        categoriesData: [],
         productsTotal: testData.length,
         currentPage: 1,
         pageSize: 4,
@@ -28,7 +39,7 @@ export default new Vuex.Store({
             return getters.productsFilterByCategory.slice(index, index + state.pageSize)
         },
         pageCount: state => Math.ceil(state.productsTotal/state.pageSize),
-        categories: state => ["All", ...new Set(state.products.map(p => p.category).sort())]
+        categories: state => ["All", ...state.categoriesData ]
 
     },
     mutations: {
@@ -44,5 +55,17 @@ export default new Vuex.Store({
             state.currentCategory = category;
             state.currentPage = 1;
         },
+        setData: (state, data) => {
+            state.products = data.pdata;
+            state.productsTotal = data.pdata.length;
+            state.categoriesData = data.cdata.sort();
+        }
+    },
+    actions: {
+        async getData(context){
+            let pdata = (await Axios.get(productsUrl)).data;
+            let cdata = (await Axios.get(categoriesUrl)).data;
+            context.commit("setData", { pdata, cdata });
+        }
     }
 })

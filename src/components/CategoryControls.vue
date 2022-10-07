@@ -15,7 +15,6 @@
 import { mapMutations, mapGetters,mapState } from "vuex";
 
 export default {
-
   methods: {
     ...mapMutations(['setCurrentCategory'])
   },
@@ -23,7 +22,6 @@ export default {
     ...mapState(['currentCategory']),
     ...mapGetters(['categories'])
   }
-
 }
 </script>
 

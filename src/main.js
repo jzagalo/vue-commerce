@@ -6,9 +6,14 @@ Vue.config.productionTip = false
 import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.min.css"
 
+import router from  "./router"
 import store from "./store"
+
+Vue.filter("currency", (value) => new Intl.NumberFormat("en-US",
+    { style: "currency", currency: "USD" }).format(value));
 
 new Vue({
   render: h => h(App),
   store,
+  router,
 }).$mount('#app')
