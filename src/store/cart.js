@@ -6,6 +6,7 @@ export default {
     getters: {
         itemCount: state => state.lines.reduce((total,line) => total + line.quantity, 0),
 
+
         totalPrice: state => state.lines.reduce((total, line) => total + (line.quantity * line.product.price),0)
     },
     mutations: {
@@ -39,7 +40,6 @@ export default {
     actions: {
         loadCartData(context) {
             let data = localStorage.getItem("cart");
-            console.log(data);
             if(data !== null) {
                 context.commit("setCartData", JSON.parse(data));
             }

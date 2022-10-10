@@ -3,6 +3,7 @@
     <div class="row">
       <div class="col bg-dark text-white">
         <a href="#" class="navbar-brand">SPORT STORE</a>
+        <CartSummary />
       </div>
     </div>
     <div class="row">
@@ -19,11 +20,13 @@
 <script>
 import ProductList from "@/components/ProductList";
 import CategoryControls from "@/components/CategoryControls";
+import CartSummary from "@/components/CartSummary";
 
 export default {
   components:{
     ProductList,
-    CategoryControls
+    CategoryControls,
+    CartSummary,
   }
 
 }

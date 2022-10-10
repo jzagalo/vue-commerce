@@ -5,6 +5,7 @@
     </td>
     <td>{{ line.product.name }}</td>
     <td class="text-right">{{ line.product.price | currency }}</td>
+    <td class="text-right">{{ (line.product.price * line.quantity ) | currency }}</td>
     <td class="text-right">
       <button class="btn btn-sm btn-danger" @click="sendRemoveEvent">Remove</button>
     </td>
