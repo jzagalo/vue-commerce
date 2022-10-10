@@ -68,6 +68,7 @@ export default {
         remove: "cart/removeProduct"
     }),
     handleQuantityChange(line, quantity){
+      console.log(line,quantity);
       this.change({ line, quantity })
     }
   }

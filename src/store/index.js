@@ -9,6 +9,7 @@ const baseUrl = "http://localhost:3500"
 const productsUrl = `${baseUrl}/products`;
 const categoriesUrl = `${baseUrl}/categories`
 import CartModule from "./cart"
+import OrdersModule from "./orders"
 
 const testData = [];
 
@@ -22,7 +23,8 @@ for (let i = 1; i <= 10; i++) {
 export default new Vuex.Store({
     strict:true,
     modules: {
-        cart: CartModule
+        cart: CartModule,
+        orders: OrdersModule
     },
     state:{
         products: testData,

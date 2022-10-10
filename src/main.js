@@ -8,9 +8,11 @@ import "font-awesome/css/font-awesome.min.css"
 
 import router from  "./router"
 import store from "./store"
+import { Vuelidate } from "vuelidate";
 
 Vue.filter("currency", (value) => new Intl.NumberFormat("en-US",
     { style: "currency", currency: "USD" }).format(value));
+Vue.use(Vuelidate)
 
 new Vue({
   render: h => h(App),
