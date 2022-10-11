@@ -12,11 +12,11 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters,mapState } from "vuex";
+import { mapGetters, mapState, mapActions} from "vuex";
 
 export default {
   methods: {
-    ...mapMutations(['setCurrentCategory'])
+    ...mapActions(['setCurrentCategory'])
   },
   computed: {
     ...mapState(['currentCategory']),
